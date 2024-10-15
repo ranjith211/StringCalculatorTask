@@ -22,10 +22,8 @@ public class StringCalculator {
             int delimiterEnd = numbers.indexOf('\n');
             String delimiterPart = numbers.substring(2, delimiterEnd);
             if (delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
-                // Handle delimiters of any length
-                delimiterRegex = delimiterPart.substring(1,delimiterPart.length()-1);
+                delimiterRegex = extractDelimitersRegex(delimiterPart);
             } else {
-                // Single character delimiter
                 delimiterRegex = Pattern.quote(delimiterPart);
             }
             numString = numbers.substring(delimiterEnd + 1);
