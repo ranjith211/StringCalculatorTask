@@ -7,11 +7,11 @@ public class StringCalculator {
         }
 
         String[] tokens = numbers.split(",");
-        if (tokens.length == 1) {
-            return Integer.parseInt(tokens[0]);
-        } else if (tokens.length == 2) {
-            return Integer.parseInt(tokens[0]) + Integer.parseInt(tokens[1]);
+        int sum = 0;
+        for (String token : tokens) {
+            sum += Integer.parseInt(token);
         }
-        return 0;
+
+        return sum;
     }
 }
