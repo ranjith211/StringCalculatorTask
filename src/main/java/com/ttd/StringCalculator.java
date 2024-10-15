@@ -1,5 +1,7 @@
 package com.ttd;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
@@ -19,8 +21,26 @@ public class StringCalculator {
         }
         String[] tokens = numString.split(delimiterRegex);
         int sum = 0;
+        List<Integer> negatives=new ArrayList<>();
         for (String token : tokens) {
-            sum += Integer.parseInt(token);
+            int num=Integer.parseInt(token);
+            if(num<0)
+            {
+                negatives.add(num);
+                continue;
+            }
+            sum += num;
+        }
+
+        if (!negatives.isEmpty()) {
+            StringBuilder message = new StringBuilder("negatives not allowed: ");
+            for (int i = 0; i < negatives.size(); i++) {
+                message.append(negatives.get(i));
+                if (i < negatives.size() - 1) {
+                    message.append(", ");
+                }
+            }
+            throw new IllegalArgumentException(message.toString());
         }
 
         return sum;
