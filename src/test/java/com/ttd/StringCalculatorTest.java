@@ -72,6 +72,10 @@ class StringCalculatorTest {
         assertEquals(1002, calculator.add("1000,1001,2"));
         assertEquals(0, calculator.add("1234"));
     }
+    @Test
+    void add_customDelimiterAnyLength_returnsSum() {
+        assertEquals(15, calculator.add("//[####]\n4####5####6"));
+    }
 
 
 
