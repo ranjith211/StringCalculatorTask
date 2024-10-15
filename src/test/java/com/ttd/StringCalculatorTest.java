@@ -77,6 +77,13 @@ class StringCalculatorTest {
         assertEquals(15, calculator.add("//[####]\n4####5####6"));
     }
 
+    @Test
+    void add_multipleDelimiters_returnsSum() {
+        assertEquals(6, calculator.add("//[*][%]\n1*2%3"));
+    }
+
+
+
 
 
 }

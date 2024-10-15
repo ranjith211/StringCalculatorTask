@@ -2,6 +2,7 @@ package com.ttd;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
@@ -58,6 +59,14 @@ public class StringCalculator {
         return sum;
     }
 
+    private String extractDelimitersRegex(String delimiterPart) {
+        Matcher matcher = Pattern.compile("\\[(.*?)\\]").matcher(delimiterPart);
+        List<String> delimiters = new ArrayList<>();
+        while (matcher.find()) {
+            delimiters.add(Pattern.quote(matcher.group(1)));
+        }
+        return String.join("|", delimiters);
+    }
     public int getCalledCount(){
         return callCount;
     }
