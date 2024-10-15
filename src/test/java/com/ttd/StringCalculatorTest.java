@@ -26,4 +26,12 @@ class StringCalculatorTest {
         assertEquals(6, calculator.add("1,2,3"));
         assertEquals(22, calculator.add("4,5,6,7"));
     }
+
+    @Test
+    void add_numbersWithNewlines_returnsSum() {
+        assertEquals(6, calculator.add("1\n2,3"));
+        assertEquals(15, calculator.add("4\n5\n6"));
+        assertEquals(10, calculator.add("1\n2\n3,4"));
+    }
+
 }
