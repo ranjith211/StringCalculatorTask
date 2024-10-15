@@ -66,5 +66,13 @@ class StringCalculatorTest {
         assertEquals(3, calculator.getCalledCount());
     }
 
+    @Test
+    void add_numbersBiggerThan1000_areIgnored() {
+        assertEquals(2, calculator.add("2,1001"));
+        assertEquals(1002, calculator.add("1000,1001,2"));
+        assertEquals(0, calculator.add("1234"));
+    }
+
+
 
 }
