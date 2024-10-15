@@ -46,12 +46,25 @@ class StringCalculatorTest {
         );
         assertEquals("negatives not allowed: -2", exception.getMessage());
 
-        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> 
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () ->
             calculator.add("//;\n-1;2;-4")
         );
         assertEquals("negatives not allowed: -1, -4", exception2.getMessage());
     }
 
+    @Test
+    void getCalledCount_returnsNumberOfAddCalls() {
+        assertEquals(0, calculator.getCalledCount());
+
+        calculator.add("");
+        assertEquals(1, calculator.getCalledCount());
+
+        calculator.add("1");
+        assertEquals(2, calculator.getCalledCount());
+
+        calculator.add("1,2");
+        assertEquals(3, calculator.getCalledCount());
+    }
 
 
 }
